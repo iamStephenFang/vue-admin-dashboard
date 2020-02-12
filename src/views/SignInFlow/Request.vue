@@ -55,7 +55,7 @@ export default {
       let slackURL = new URL("https://slack.com/api/chat.postMessage");
 
       const data = {
-        token: 'xoxp-937571930355-951249687734-949135115136-8d732571c10c1bee977195cc673fca01',
+        token: "${token}",
         channel: "vue-proj",
         text: `${email} 已发送至后台进行审核.`
       };
