@@ -64,9 +64,6 @@ export default {
     }
   },
   methods: {
-    toggleDarkMode() {
-      this.$store.commit("toggleDarkMode");
-    },
     onSubmit() {
       const email = this.email;
       const password = this.password;
@@ -78,7 +75,7 @@ export default {
           this.$router.replace("/");
         })
         .catch(error => {
-          alert("Error: " + error);
+          alert("出现错误: " + error);
         });
     }
   },
@@ -88,6 +85,12 @@ export default {
     if (params.userLoggedOut) {
       this.hasText = true;
       this.text = "您已成功登出!";
+    } else if (params.userRecoveredAccount) {
+      this.hasText = true;
+      this.text = `恢复邮件已发送至 ${params.email}。`;
+    } else if (params.userRequestedAccount) {
+      this.hasText = true;
+      this.text = `申请邮件已经以 ${params.email} 发送至后台。`;
     }
   }
 };
