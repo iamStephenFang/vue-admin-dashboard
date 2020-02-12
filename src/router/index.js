@@ -1,22 +1,29 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue"
-import SignIn from "../views/SignInFlow/SignIn"
-import Request from "../views/SignInFlow/Request"
-import Recover from "../views/SignInFlow/Recover"
+import About from "../views/About.vue";
+import SignIn from "../views/SignInFlow/SignIn";
+import Request from "../views/SignInFlow/Request";
+import Recover from "../views/SignInFlow/Recover";
+import * as netlifyIdentityWidget from "netlify-identity-widget";
 
 Vue.use(VueRouter);
 
 const routes = [{
         path: "/",
         name: "Home",
-        component: Home
+        component: Home,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/about",
         name: "About",
-        component: About
+        component: About,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/signin",
@@ -33,15 +40,6 @@ const routes = [{
         name: "recover",
         component: Recover
     }
-    // {
-    //   path: "/about",
-    //   name: "About",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-    // }
 ];
 
 const router = new VueRouter({
@@ -50,4 +48,16 @@ const router = new VueRouter({
     routes
 });
 
+router.beforeEach((to, from, next) => {
+    const currentUser = netlifyIdentityWidget.currentUser();
+    const requiresAuth = to.matched.some(record => {
+        return record.meta.requiresAuth;
+    });
+
+    if (requiresAuth && !currentUser) {
+        next("signin");
+    } else {
+        next();
+    }
+});
 export default router;
