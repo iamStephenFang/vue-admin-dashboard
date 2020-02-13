@@ -22,6 +22,7 @@ export default {
 }
 
 body {
+  margin: 0;
   background-color: $dark-blue;
 }
 
@@ -60,19 +61,6 @@ p {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $white;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: $white;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 
 input {

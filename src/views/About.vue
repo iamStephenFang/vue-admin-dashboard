@@ -1,92 +1,109 @@
 <template>
-  <div class="container">
-    <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-      关于博客
-    </h3>
-    <div class="cards">
-      <transition appear appear-active-class="animated pulse">
-        <a
-          class="card card-1"
-          :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
-        >
-          <img
-            src="@/assets/author.png"
-            class="card-header"
-            :class="{ 'light-header': !isDarkMode, 'dark-header': isDarkMode }"
-          />
-          <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            Author
-          </h3>
-          <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            @StephenFang
-          </p>
-        </a>
-      </transition>
-      <transition appear appear-active-class="animated pulse">
-        <a
-          class="card card-2"
-          :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
-        >
-          <img
-            src="@/assets/IG.png"
-            class="card-header"
-            :class="{ 'light-header': !isDarkMode, 'dark-header': isDarkMode }"
-          />
-          <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            Instagram
-          </h3>
-          <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            @iamstephenfang
-          </p>
-        </a>
-      </transition>
-      <transition appear appear-active-class="animated pulse">
-        <a
-          class="card card-3"
-          :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
-        >
-          <img
-            src="@/assets/github.png"
-            class="card-header"
-            :class="{ 'light-header': !isDarkMode, 'dark-header': isDarkMode }"
-          />
-          <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            GitHub
-          </h3>
-          <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            @iamStephenFang
-          </p>
-        </a>
-      </transition>
-      <transition appear appear-active-class="animated pulse">
-        <a
-          class="card card-1"
-          :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
-        >
-          <img
-            src="@/assets/twi.png"
-            class="card-header"
-            :class="{ 'light-header': !isDarkMode, 'dark-header': isDarkMode }"
-          />
-          <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            Twitter
-          </h3>
-          <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-            @fangxuanmiao
-          </p>
-        </a>
-      </transition>
+  <div class="about">
+    <Header />
+    <div class="container">
+      <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+        关于博客
+      </h3>
+      <div class="cards">
+        <transition appear appear-active-class="animated pulse">
+          <a
+            class="card card-1"
+            :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
+          >
+            <img
+              src="@/assets/author.png"
+              class="card-header"
+              :class="{
+                'light-header': !isDarkMode,
+                'dark-header': isDarkMode
+              }"
+            />
+            <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              Author
+            </h3>
+            <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              @StephenFang
+            </p>
+          </a>
+        </transition>
+        <transition appear appear-active-class="animated pulse">
+          <a
+            class="card card-2"
+            :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
+          >
+            <img
+              src="@/assets/IG.png"
+              class="card-header"
+              :class="{
+                'light-header': !isDarkMode,
+                'dark-header': isDarkMode
+              }"
+            />
+            <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              Instagram
+            </h3>
+            <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              @iamstephenfang
+            </p>
+          </a>
+        </transition>
+        <transition appear appear-active-class="animated pulse">
+          <a
+            class="card card-3"
+            :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
+          >
+            <img
+              src="@/assets/github.png"
+              class="card-header"
+              :class="{
+                'light-header': !isDarkMode,
+                'dark-header': isDarkMode
+              }"
+            />
+            <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              GitHub
+            </h3>
+            <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              @iamStephenFang
+            </p>
+          </a>
+        </transition>
+        <transition appear appear-active-class="animated pulse">
+          <a
+            class="card card-1"
+            :class="{ 'light-card': !isDarkMode, 'dark-card': isDarkMode }"
+          >
+            <img
+              src="@/assets/twi.png"
+              class="card-header"
+              :class="{
+                'light-header': !isDarkMode,
+                'dark-header': isDarkMode
+              }"
+            />
+            <h3 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              Twitter
+            </h3>
+            <p :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
+              @fangxuanmiao
+            </p>
+          </a>
+        </transition>
+      </div>
+      <ThemeSwitch />
     </div>
-    <ThemeSwitch />
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 import ThemeSwitch from "@/components/ThemeSwitch";
 
 export default {
   name: "About",
   components: {
+    Header,
     ThemeSwitch
   },
   computed: {
