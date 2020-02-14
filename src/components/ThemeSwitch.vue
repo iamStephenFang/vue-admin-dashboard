@@ -1,6 +1,6 @@
 <template>
   <button
-    class="toggle"
+    class="switch-toggle"
     :class="{ 'light-toggle': !isDarkMode, 'dark-toggle': isDarkMode }"
     @click="toggleDarkMode"
   >
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.toggle {
+.switch-toggle {
   background: $black;
   border-radius: 50%;
 

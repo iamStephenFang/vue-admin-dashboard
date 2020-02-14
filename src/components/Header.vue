@@ -7,11 +7,11 @@
         :class="{ 'light-nav': !isDarkMode, 'dark-nav': isDarkMode }"
         >主页</router-link
       >
-      <router-link
+      <!-- <router-link
         to="/manage"
         :class="{ 'light-nav': !isDarkMode, 'dark-nav': isDarkMode }"
         >管理</router-link
-      >
+      > -->
       <router-link
         to="/about"
         :class="{ 'light-nav': !isDarkMode, 'dark-nav': isDarkMode }"
@@ -80,7 +80,7 @@ export default {
       color: $white;
     }
     &.router-link-exact-active.light-nav {
-      color: $middle-blue;
+      color: $pink-blue;
     }
   }
 }

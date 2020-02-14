@@ -3,8 +3,11 @@
     <Header />
     <div class="container">
       <div class="spread">
-        <h1>Dashboard</h1>
-        <div class="toggle">
+        <h1 :class="{ dark: !isDarkMode, white: isDarkMode }">总览</h1>
+        <div
+          class="toggle"
+          :class="{ 'light-box': isDarkMode, 'dark-box': !isDarkMode }"
+        >
           <div ref="days" class="days" @click="toggleDays">天</div>
           <div ref="weeks" class="weeks" @click="toggleWeeks">周</div>
           <div ref="months" class="months" @click="toggleMonths">月</div>
@@ -18,6 +21,7 @@
         :options="chartOptions"
         :series="series"
       ></apexchart>
+      <ThemeSwitch />
     </div>
   </div>
 </template>
@@ -25,21 +29,28 @@
 <script>
 import Header from "@/components/Header.vue";
 import VueApexCharts from "vue-apexcharts";
-
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 export default {
   name: "home",
   components: {
     Header,
+    ThemeSwitch,
     apexchart: VueApexCharts
+  },
+  computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    }
   },
   data() {
     return {
       chartOptions: {
-        colors: ["#14f1d9", "#7b42f6"],
+        // colors: ["#14f1d9", "#7b42f6"],
+        colors: ["#bbe1fa", "#3282b8"],
         legend: {
           labels: {
-            colors: [this.$store.getters.isDarkMode ? "white" : "black"]
+            colors: ["#888888"]
           },
           position: "top"
         },
@@ -67,17 +78,17 @@ export default {
       },
       series: [
         {
-          name: "active users",
+          name: "存在用户",
           data: [
-            [new Date("January 1, 2019"), 30],
-            [new Date("January 5, 2019"), 40]
+            [new Date("January 1, 2020"), 30],
+            [new Date("January 10, 2020"), 40]
           ]
         },
         {
-          name: "new users",
+          name: "新增用户",
           data: [
-            [new Date("January 1, 2019"), 80],
-            [new Date("January 5, 2019"), 20]
+            [new Date("January 1, 2020"), 80],
+            [new Date("January 10, 2020"), 20]
           ]
         }
       ]
@@ -140,8 +151,12 @@ export default {
   width: 100%;
 }
 
-h1 {
-  @include heading-3;
+h1.dark {
+  @include heading-3($black);
+}
+
+h1.white {
+  @include heading-3($white);
 }
 
 .toggle {
@@ -153,8 +168,6 @@ h1 {
   padding: 5px;
   display: flex;
   flex-wrap: nowrap;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     cursor: pointer;

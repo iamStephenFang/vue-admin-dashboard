@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :class="{ 'light-background': !isDarkMode, 'dark-background': isDarkMode }"
+  >
     <router-view />
   </div>
 </template>
@@ -9,6 +12,11 @@ import "animate.css";
 
 export default {
   name: "App",
+  computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    }
+  },
   mounted() {
     const isDarkMode = this.$store.getters.isDarkMode;
     document.body.style.background = isDarkMode ? "#212c4f" : "#f0f3f5";
@@ -53,6 +61,11 @@ a {
 
 p {
   @include large-text-bold($purple);
+}
+
+line,
+text {
+  opacity: 0.2;
 }
 
 #app {
@@ -100,9 +113,18 @@ button {
 /* THEME */
 .light-background {
   background-color: $light-gray;
+  line,
+  text {
+    stroke: $black;
+  }
 }
+
 .dark-background {
   background-color: $dark-blue;
+  line,
+  text {
+    stroke: $light-gray;
+  }
 }
 
 .light-text {
@@ -116,6 +138,7 @@ button {
 .light-field {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $white;
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.3);
@@ -125,6 +148,7 @@ button {
 .dark-field {
   background: rgba(192, 208, 235, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
+  color: $black;
 
   &::placeholder {
     color: rgba(0, 0, 0, 0.3);
@@ -137,5 +161,15 @@ button {
 
 .dark-link {
   color: rgba(0, 0, 0, 0.3);
+}
+
+.light-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-box {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>

@@ -110,11 +110,6 @@ export default {
     isDarkMode() {
       return this.$store.getters.isDarkMode;
     }
-  },
-  methods: {
-    toggleDarkMode() {
-      this.$store.commit("toggleDarkMode");
-    }
   }
 };
 </script>
@@ -127,7 +122,7 @@ export default {
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: space-evenly;
 }
 
